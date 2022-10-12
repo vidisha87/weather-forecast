@@ -1,0 +1,59 @@
+create database weather_forecast;
+use weather_forecast;
+
+create table location_details
+(
+    location_id INT NOT NULL AUTO_INCREMENT,
+    lat FLOAT(7,4),
+    lon FLOAT(7,4),
+    city VARCHAR(100),
+    state VARCHAR(100),
+     PRIMARY KEY (location_id)
+);
+
+create table weather_details
+(
+    id INT NOT NULL ,
+    weather_date DATE DEFAULT (CURRENT_DATE()),
+     location_id INT NOT NULL,
+     
+   PRIMARY KEY (id),
+     FOREIGN KEY (location_id) REFERENCES location_details(location_id)
+    
+    
+);
+
+create table temperature_details
+(
+    temperature_id INT NOT NULL AUTO_INCREMENT,
+  	weather_id INT NOT NULL,
+    temperature_1 FLOAT(4.1),
+    temperature_2 FLOAT(4.1),
+    temperature_3 FLOAT(4.1),
+    temperature_4 FLOAT(4.1),
+    temperature_5 FLOAT(4.1),
+    temperature_6 FLOAT(4.1),
+    temperature_7 FLOAT(4.1),
+    temperature_8 FLOAT(4.1),
+    temperature_9 FLOAT(4.1),
+    temperature_10 FLOAT(4.1),
+    temperature_11 FLOAT(4.1),
+    temperature_12 FLOAT(4.1),
+    temperature_13 FLOAT(4.1),
+    temperature_14 FLOAT(4.1),
+    temperature_15 FLOAT(4.1),
+    temperature_16 FLOAT(4.1),
+    temperature_17 FLOAT(4.1),
+    temperature_18 FLOAT(4.1),
+    temperature_19 FLOAT(4.1),
+    temperature_20 FLOAT(4.1),
+    temperature_21 FLOAT(4.1),
+    temperature_22 FLOAT(4.1),
+    temperature_23 FLOAT(4.1),
+    temperature_24 FLOAT(4.1),
+    PRIMARY KEY (temperature_id),
+     FOREIGN KEY (weather_id) REFERENCES weather_details(id)
+    
+);
+
+

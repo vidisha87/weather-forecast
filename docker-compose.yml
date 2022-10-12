@@ -1,0 +1,29 @@
+version: '3'
+services:
+  mysql-standalone:
+    container_name: mysql-standalone
+    restart: always
+    image: mysql-standalone
+    build:
+          context: ./database/
+          dockerfile: Dockerfile
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+    ports:
+      - "3305:3306"
+
+  spring-boot-weather-forecast:
+    container_name: spring-boot-weather-forecast
+    image: spring-boot-weather-forecast
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql-standalone
+    ports:
+      - "8000:8080"
+    command: mvn clean spring-boot:run
+
+networks:
+  default_network:
+    driver: "bridge"
